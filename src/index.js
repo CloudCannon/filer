@@ -23,7 +23,7 @@ export default class Filer {
 	async getItems(folder, options) {
 		const filenames = await readdir(join(this.path, folder));
 
-		const items = await Promise.all(await filenames.reduce(async (memoPromise, filename) => {
+		const items = await filenames.reduce(async (memoPromise, filename) => {
 			if (!filename.startsWith('_')) {
 				const item = await this.getItem(filename, { ...options, folder });
 				const memo = await memoPromise;
@@ -32,7 +32,7 @@ export default class Filer {
 			}
 
 			return memoPromise;
-		}, []));
+		}, []);
 
 		if (options?.sortKey) {
 			return items.sort((a, b) => {

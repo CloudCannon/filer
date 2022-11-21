@@ -35,7 +35,7 @@
   "author": "CloudCannon <support@cloudcannon.com>",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^3.15.0",
+    "ava": "^5.1.0",
     "c8": "^7.11.0",
     "eslint": "^8.12.0"
   },
