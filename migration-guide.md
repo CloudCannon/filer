@@ -12,12 +12,12 @@ const filer = new Filer({ path: 'content' });
 
 Old
 ```
-getCollectionSlugs();
+await getCollectionSlugs('posts');
 ```
 
 New
 ```
-filer.listItemSlugs('posts').map((slug) => ({ params: { slug } }));
+(await filer.listItemSlugs('posts')).map((slug) => ({ params: { slug } }));
 ```
 
 
@@ -26,13 +26,13 @@ filer.listItemSlugs('posts').map((slug) => ({ params: { slug } }));
 Old
 ```
 getCollection('posts');
-getCollection('posts', { sortKey: 'date' });
+getCollection('posts', { excerpt: true, sortKey: 'date' });
 ```
 
 New
 ```
 filer.getItems('posts');
-filer.getItems('posts', { sortKey: 'date' });
+filer.getItems('posts', { excerpt: true, sortKey: 'date' });
 ```
 
 
