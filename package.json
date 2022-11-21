@@ -11,7 +11,7 @@
   "homepage": "https://github.com/CloudCannon/filer#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CloudCannon/filer.git"
+    "url": "git+https://github.com/CloudCannon/filer.git"
   },
   "bugs": {
     "url": "https://github.com/CloudCannon/filer/issues",
@@ -45,5 +45,8 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "markdown-it": "^13.0.1"
+  },
+  "directories": {
+    "test": "tests"
   }
 }
