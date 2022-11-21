@@ -1,0 +1,49 @@
+{
+  "name": "@cloudcannon/filer",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Provides an API for accessing parsed file content in a collection-like file structure.",
+  "keywords": [
+    "files",
+    "static site generator",
+    "cloudcannon"
+  ],
+  "homepage": "https://github.com/CloudCannon/filer#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudCannon/filer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CloudCannon/filer/issues",
+    "email": "support@cloudcannon.com"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "test": "ava",
+    "test:watch": "ava --watch --verbose",
+    "test:coverage": "c8 --all ava",
+    "lint": "eslint src",
+    "release:latest": "npx np",
+    "release:next": "npx np prerelease --tag=next"
+  },
+  "bin": {
+    "cloudcannon-filer": "src/index.js"
+  },
+  "files": [
+    "src/**/*.js"
+  ],
+  "author": "CloudCannon <support@cloudcannon.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "c8": "^7.11.0",
+    "eslint": "^8.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^13.0.1"
+  }
+}
