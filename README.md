@@ -114,14 +114,6 @@ Lint code:
 $ npm run lint
 ```
 
-Link this package locally to test it on a site folder, then run it within your site folder:
-
-```sh
-$ npm link
-$ cd ../my-ssg-site
-$ cloudcannon-reader
-```
-
 ## License
 
 MIT
