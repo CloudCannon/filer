@@ -124,4 +124,4 @@ $ cloudcannon-reader
 
 ## License
 
-ISC
+MIT
