@@ -93,7 +93,7 @@ This function returns data in the following format:
 {
   data: [], // An array containing the paginated files (for this page).
   start: 20, // The index of the first item on this page (starting at 0)
-  end: 29 // The index of the first item on this page (starting at 0)
+  end: 29, // The index of the first item on this page (starting at 0)
   total: 42, // The total number of items in this collection
   currentPage: 3, // The page number being returned
   size: 10, // The number of items on this page
