@@ -67,7 +67,7 @@ await filer.getItems('posts');
 
 await filer.getItems('posts', {
   excerpt: true, // Produces excerpts/summaries from the first paragraph of content for each item
-  sortKey: 'date' // Sorts items from this parsed data
+  sortKey: 'date', // Sorts items from this parsed data
   sortReverse: true // Reverses the sorted items (defaults to false)
 });
 ```
