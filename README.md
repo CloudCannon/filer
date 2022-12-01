@@ -67,8 +67,40 @@ await filer.getItems('posts');
 
 await filer.getItems('posts', {
   excerpt: true, // Produces excerpts/summaries from the first paragraph of content for each item
-  sortKey: 'date' // Sorts items from this parsed data
+  sortKey: 'date', // Sorts items from this parsed data
+  sortReverse: true // Reverses the sorted items (defaults to false)
 });
+```
+
+### Getting paginated items in collection
+```javascript
+
+await filer.getPaginatedItems('posts', {
+  sortKey: 'date', // Accepts all valid options for getItems()
+  pagination: { // Requires a 'pagination' object in options
+    size: 10, // Number of items per page
+    page: 3 // The page number
+  }
+});
+```
+
+If the `page` requested is greater than the number of pages, will return the last page.
+
+If the `size` requested is greater than the number of items, will return one page with all items.
+
+This function returns data in the following format:
+```javascript
+{
+  data: [], // An array containing the paginated files (for this page).
+  start: 20, // The index of the first item on this page (starting at 0)
+  end: 29, // The index of the first item on this page (starting at 0)
+  total: 42, // The total number of items in this collection
+  currentPage: 3, // The page number being returned
+  size: 10, // The number of items on this page
+  lastPage: 5, // The number of the last page (equal to the number of pages)
+  prevPage: 2, // The number of the previous page (undefined if current page is first page)
+  nextPage: 4 // The number of the next page (undefined if current page is last page)
+};
 ```
 
 ### Getting one parsed item in collection
