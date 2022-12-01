@@ -35,30 +35,34 @@ export default class Filer {
 		}, []);
 
 		if (options?.sortKey) {
-			return items.sort((a, b) => {
+			const sorted = items.sort((a, b) => {
 				if (a.data[options?.sortKey] === b.data[options?.sortKey]) {
 					return 0;
 				}
 
 				return a.data[options?.sortKey] > b.data[options?.sortKey] ? -1 : 1;
 			});
+			if (options?.sortReverse) {
+				sorted.reverse();
+			}
+			return sorted;
 		}
 
 		return items;
 	}
 
 	async getPaginatedItems(folder, options) {
-		const { pagination } = options;
+		const pagination = options?.pagination || {};
 		const items = await this.getItems(folder, options);
 
 		const numberOfItems = items.length;
 		const pageSize = pagination.size || numberOfItems;
 		const numberOfPages = Math.ceil(numberOfItems / pageSize);
-		const pageNumber = clamp(pagination.page || 1, 0, numberOfPages);
+		const pageNumber = clamp(pagination.page || 1, 1, numberOfPages);
 		const prevPage = pageNumber - 1;
 		const nextPage = pageNumber + 1;
 
-		const indexStart = (pageSize * (pageNumber - 1));
+		const indexStart = clamp(pageSize * (pageNumber - 1), 0, numberOfItems - 1);
 		const indexEnd = clamp(indexStart + pageSize, indexStart, numberOfItems);
 		const pagedItems = items.slice(indexStart, indexEnd);
 
