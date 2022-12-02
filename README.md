@@ -72,6 +72,20 @@ await filer.getItems('posts', {
 });
 ```
 
+### Getting filtered items in a collection
+
+You can provide a `filter` function to the `options` object.
+
+This function should return a boolean value. The item will be returned if `filter` returns `true`.
+
+```javascript
+await filer.getItems('posts', {
+  filter: (item) => { // checks each item in 'posts' before returning
+    return item.data.tags.includes('category');
+  }
+});
+```
+
 ### Getting paginated items in collection
 ```javascript
 
