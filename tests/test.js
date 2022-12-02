@@ -69,6 +69,36 @@ test('gets items sorted', async (t) => {
 	]);
 });
 
+test('gets items filtered', async (t) => {
+	const date = new Date('2022-01-02');
+	const filter = (item) => {
+		return item.data.date.getTime() <= date.getTime();
+	};
+	const posts = await filer.getItems('posts', { filter });
+	t.deepEqual(posts, [
+		{
+			content: '',
+			content_html: '',
+			data: {
+				title: 'b',
+				date: new Date('2022-01-02')
+
+			},
+			slug: 'b'
+		},
+		{
+			content: '',
+			content_html: '',
+			data: {
+				title: 'a',
+				date: new Date('2022-01-01')
+
+			},
+			slug: 'a'
+		}
+	]);
+});
+
 test('gets items sorted in reverse order', async (t) => {
 	const people = await filer.getItems('people', { sortKey: 'favourite_letter', sortReverse: true });
 	t.deepEqual(people, [
@@ -214,6 +244,51 @@ test('paginated items with page number less than 1', async (t) => {
 	});
 });
 
+test('gets paginated items with a filter', async (t) => {
+	const date = new Date('2022-01-05');
+	const filter = (item) => {
+		return item.data.date.getTime() <= date.getTime();
+	};
+	const posts = await filer.getPaginatedItems('posts', {
+		filter,
+		pagination: {
+			size: 2,
+			page: 2,
+		}
+	});
+	t.deepEqual(posts, {
+		data: [
+			{
+				content: '',
+				content_html: '',
+				data: {
+					title: 'c',
+					date: new Date('2022-01-03')
+
+				},
+				slug: 'c'
+			},
+			{
+				content: '',
+				content_html: '',
+				data: {
+					title: 'b',
+					date: new Date('2022-01-02')
+
+				},
+				slug: 'b'
+			}
+		],
+		start: 2,
+		end: 3,
+		total: 5,
+		currentPage: 2,
+		size: 2,
+		lastPage: 3,
+		prevPage: 1,
+		nextPage: 3
+	});
+});
 
 test('gets item', async (t) => {
 	const people = await filer.getItem('jane.md', { folder: 'people' });
