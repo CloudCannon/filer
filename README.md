@@ -81,7 +81,7 @@ This function should return a boolean value. The item will be returned if `filte
 ```javascript
 await filer.getItems('posts', {
   filter: (item) => { // checks each item in 'posts' before returning
-    return item.data.tags.includes('category')
+    return item.data.tags.includes('category');
   }
 });
 ```
