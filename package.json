@@ -1,7 +1,7 @@
 {
   "name": "@cloudcannon/filer",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Provides an API for accessing parsed file content in a collection-like file structure.",
   "keywords": [
     "files",
